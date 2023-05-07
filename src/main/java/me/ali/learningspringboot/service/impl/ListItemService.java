@@ -4,6 +4,8 @@ import me.ali.learningspringboot.model.ListItem;
 import me.ali.learningspringboot.repository.ListItemRepo;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ListItemService implements me.ali.learningspringboot.service.ListItemService {
 
@@ -11,6 +13,16 @@ public class ListItemService implements me.ali.learningspringboot.service.ListIt
 
     public ListItemService(ListItemRepo listItemRepo) {
         this.listItemRepo = listItemRepo;
+    }
+
+    @Override
+    public List<ListItem> getCompletedListItems() {
+        return listItemRepo.findListItemsByCompleted(true);
+    }
+
+    @Override
+    public Iterable<ListItem> getUnCompletedListItems() {
+        return listItemRepo.findListItemsByCompleted(false);
     }
 
     @Override

@@ -21,6 +21,16 @@ public class ListItemController {
         return listItemService.getListItems();
     }
 
+    @GetMapping("/list/completed")
+    public Iterable<ListItem> getCompletedListItems() {
+        return listItemService.getCompletedListItems();
+    }
+
+    @GetMapping("/list/uncompleted")
+    public Iterable<ListItem> getUncompletedListItems() {
+        return listItemService.getUnCompletedListItems();
+    }
+
     @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
     public ListItem createListItem(@RequestBody ListItem listItem) {
