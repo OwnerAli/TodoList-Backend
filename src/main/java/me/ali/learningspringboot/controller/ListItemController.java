@@ -2,6 +2,7 @@ package me.ali.learningspringboot.controller;
 
 import me.ali.learningspringboot.model.ListItem;
 import me.ali.learningspringboot.service.impl.ListItemService;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,6 +21,7 @@ public class ListItemController {
         return listItemService.getListItems();
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @PostMapping("/add")
     public ListItem createListItem(@RequestBody ListItem listItem) {
         return listItemService.createListItem(listItem);
